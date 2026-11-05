@@ -1,0 +1,18 @@
+services:
+  docforge:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: docforge
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - docforge_data:/app/storage
+    environment:
+      - PORT=8000
+      - HOST=0.0.0.0
+
+volumes:
+  docforge_data:
+    name: docforge_storage
